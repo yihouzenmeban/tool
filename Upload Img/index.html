@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="uploadfile.css" rel="stylesheet">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="jquery.uploadfile.min.js"></script>
+</head>
+<body>
+<div id="previewupload">Upload</div>
+<button class="test">Test</button>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    var imgArray = new Array();
+    $("#previewupload").uploadFile({
+        url: "save.php",
+        fileName: "myfile",
+        acceptFiles: "image/*",
+        showPreview: true,
+        previewHeight: "100px",
+        previewWidth: "100px",
+        onSuccess: function (files, response, xhr, pd) {
+            imgArray.push(JSON.parse(response)[0]);
+            console.log(imgArray);
+        }
+    });
+    $('.test').click(function(event) {
+        console.log(JSON.stringify(imgArray));
+    });
+});
+</script>
+</body>
+</html>

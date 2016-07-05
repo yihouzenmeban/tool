@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook ID</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dataTables.foundation.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dataTables.tableTools.css">
+    <style type="text/css">
+        body{
+            background-color: #F9F9F9;
+            background-image: url("../images/bg.png");
+        }
+        td{
+            background-image: url("../images/bg.png");
+        }
+        td.highlight {
+            background-color: #eeeeee !important;
+        }
+        .mybox {
+            width:980px;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="mybox">
+    <table id="example" class="display" cellspacing="0" width="100%"></table>
+</div>
+<!-- <script src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/dataTables.foundation.min.js"></script> -->
+<script type="text/javascript" src="../js/datatables.min.js"></script>
+<script type="text/javascript" src="../js/dataTables.tableTools.js"></script>
+<script>
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        dom: 'T<"clear">lfrtip',
+        tableTools: {
+            "aButtons": [
+                "copy",
+                "csv",
+                "xls",
+                {
+                    "sExtends": "pdf",
+                    "sPdfOrientation": "landscape",
+                    "sPdfMessage": "Your custom message would go here."
+                },
+                "print"
+            ]
+        },
+        "order": [[ 5, "desc" ]],
+        "columns": [
+            { title: "Uid" },
+            { title: "FBid" },
+            { title: "Gid" },
+            { title: "Sid" },
+            { title: "Action" },
+            { title: "AddTime" }
+        ],
+        "iDisplayLength": 50,
+        "lengthMenu": [[25, 50, 200, 1000], [25, 50, 200, 1000]],
+        "ajax": "test.php"
+    } );
+    $('#example tbody')
+        .on( 'mouseenter', 'td', function () {
+            var colIdx = table.cell(this).index().column;
+            var tdIdx = $(this).siblings();
+
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+            $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+            tdIdx.addClass('highlight');
+        } );
+} );
+</script>
+</body>
+</html>

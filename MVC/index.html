@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script type="text/javascript" src="demo.js"></script>
+<script type="text/javascript">
+(function () {
+    var model = new Model();
+    var div1 = document.getElementById('div1');
+    var div2 = document.getElementById('div2');
+    model.bind(div1);
+    model.bind(div2);
+    /*model.watch(function (value) {
+        div1.innerHTML = value;
+    })*/
+    model.set('hello, this is a div');
+})();
+</script>
+</body>
+</html>

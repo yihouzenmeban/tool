@@ -1,0 +1,39 @@
+{
+    //https://developer.chrome.com/extensions/getstarted
+    //http://open.chrome.360.cn/extension_dev/overview.html
+    "name": "yihouzenmeban",
+    "version": "0.0.1",
+    "manifest_version": 2,
+
+    //description
+    "description": "yihouzenmeban",
+    "icons": {
+        "16": "image/icon16.png",
+        "48": "image/icon48.png"
+    },
+    //language
+    "default_locale": "en",
+
+    //logo
+    "browser_action": {
+        "default_title": "yihouzenmeban",
+        "default_icon": "image/icon16.png",
+        "default_popup": "html/index.html"
+    },
+
+    //scripts
+    "content_scripts": [{
+        "js": ["script/test.js"],
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        //when start
+        "run_at": "document_start"
+    }],
+    //http page
+    "permissions": [
+        "http://*/*",
+        "https://*/*"
+    ]
+}
